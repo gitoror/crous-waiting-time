@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { FiArrowUpRight } from "react-icons/fi";
+import { GiClockwork } from "react-icons/gi";
 
 function LinkItem({ href, path, children }) {
   const router = useRouter();
@@ -24,19 +25,15 @@ export default function Navbar() {
           <h1 className={styles.logo}>
             <Link href="/">
               <span>
-                <Image src="/neural-2.png" alt="Logo" width={40} height={40} />
-                <p>Réseaux Mesh</p>
+                <GiClockwork size={40} />
+                <p>Crous WT</p>
               </span>
             </Link>
           </h1>
           <ul>
             <li>
-              <LinkItem href="/concept">Concept</LinkItem>
+              <LinkItem href="/apropos">À propos</LinkItem>
             </li>
-            <li>
-              <LinkItem href="/projet">Projet</LinkItem>
-            </li>
-
             <li className={styles.faq}>
               <LinkItem href="/faq">
                 FAQ
