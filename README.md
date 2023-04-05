@@ -38,4 +38,4 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Supabase CLI
-To use the supabase CLI, if you have an error with `supabase __`, `use node_modules/supabase/bin/supabase -h`
+To use the supabase CLI, if you have an error with `supabase`, use `node_modules/supabase/bin/supabase -h`
