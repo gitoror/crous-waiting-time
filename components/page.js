@@ -14,7 +14,7 @@ export default function Page({ children }) {
             quality="100"
           />
         </div>
-        {children}
+        <div style={{ padding: "0px 20px 0px 20px" }}>{children}</div>
         <footer align="center" className={styles.footer}>
           <p>
             &copy; {new Date().getFullYear()} ARTEM Crous Company. Tous droits
