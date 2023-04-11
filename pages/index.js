@@ -1,7 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
 import Main from "@/components/main.js";
 import ShowWaitTime from "@/components/ShowWaitTime";
 import GiveWaitTime from "@/components/GiveWaitTime";
