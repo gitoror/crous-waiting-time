@@ -30,11 +30,9 @@ export default function GiveWaitTime() {
           placeholder="Temps en minutes. Par exemple: 15"
           onChange={(e) => setWaitTime(e.target.value)}
           style={{
-            width: "30%",
-            height: "30px",
             border: "1px solid",
             "border-radius": "5px",
-            padding: "4px 0px 0px 4px",
+            padding: "0px 0px 0px 4px",
             resize: "none",
           }}
         ></textarea>
@@ -44,11 +42,9 @@ export default function GiveWaitTime() {
           placeholder="Surnom"
           onChange={(e) => setName(e.target.value)}
           style={{
-            width: "10%",
-            height: "30px",
             border: "1px solid",
             "border-radius": "5px",
-            padding: "4px 0px 0px 4px",
+            padding: "0px 0px 0px 4px",
             "margin-left": "10px",
             resize: "none",
           }}
