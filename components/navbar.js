@@ -34,33 +34,7 @@ export default function Navbar() {
             <li>
               <LinkItem href="/apropos">À propos</LinkItem>
             </li>
-            <li className={styles.faq}>
-              <LinkItem href="/faq">
-                FAQ
-                <FiArrowUpRight
-                  size={23}
-                  style={{
-                    "padding-left": "3px",
-                    "padding-top": "auto",
-                    "padding-bottom": "auto",
-                  }}
-                />
-              </LinkItem>
-            </li>
           </ul>
-          <div className={styles.github}>
-            <a href="" target="_blank">
-              <span>
-                <Image
-                  src="/github-mark.png"
-                  alt="Logo"
-                  width={18}
-                  height={18}
-                />
-                <p>Source</p>
-              </span>
-            </a>
-          </div>
         </div>
       </nav>
     </>

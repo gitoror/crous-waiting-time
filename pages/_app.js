@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
         <meta name="description" content="Projet sur les réseaux Mesh" />
         <meta name="author" content="TM" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/logo.jpg" />
+        <link rel="icon" href="/favicon.ico" />
         <title>Crous WT</title>
       </Head>
       <style jsx global>{`

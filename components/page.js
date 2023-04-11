@@ -17,7 +17,8 @@ export default function Page({ children }) {
         {children}
         <footer align="center" className={styles.footer}>
           <p>
-            &copy; {new Date().getFullYear()} Tom Marini. Tous droits reversés.
+            &copy; {new Date().getFullYear()} ARTEM Crous Company. Tous droits
+            reversés.
           </p>
         </footer>
       </div>

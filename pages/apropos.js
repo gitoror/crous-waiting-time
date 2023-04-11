@@ -8,48 +8,20 @@ export default function Apropos() {
         <title>À propos - Crous WT</title>
       </Head>
       <Main>
-        <h2>Qui sommes nous ?</h2>
+        <h2>La raison d'être</h2>
         <p>
-          Déchets Atari retrouvés lors de l'excavation de 2014. L'enfouissement
-          de jeux vidéo par Atari est un événement qui s'est déroulé en
-          septembre 1983 dans une décharge située à Alamogordo au
-          Nouveau-Mexique. En 1983, l'entreprise de jeu vidéo Atari enfouit de
-          nombreuses cartouches de jeu vidéo et des consoles de jeu invendues
-          dans la décharge d'Alamogordo, à la suite de mauvais résultats
-          commerciaux. Les causes de cette action sont essentiellement
-          économiques : il s'agit de réduire les stocks afin de bénéficier
-          d'allègements fiscaux. Selon la presse de l'époque, les jeux vidéo
-          enfouis sont notamment E.T. the Extra-Terrestrial, l'un des plus
-          grands échecs commerciaux de l'histoire du jeu vidéo, et la version de
-          Pac-Man sortie sur Atari 2600, succès commercial mais décrié par la
-          critique. Sitôt l'opération d’enfouissement rapportée par la presse,
-          des doutes sont émis sur la véracité et sur l'étendue des faits ;
-          certains considèrent pendant longtemps qu'il s'agit d'une légende
-          urbaine. Cet événement, cependant devenu une sorte d'icône culturelle,
-          symbolisant le krach du jeu vidéo de 1983, est le point d'orgue d'une
-          année fiscale désastreuse pour Atari, finalement revendue en 1984 par
-          sa société mère Warner Communications.
+          Vous en avez marre de perdre votre temps dans la queue de la cantine
+          du Crous d'Artem ? Ce site est la solution à ce problème ! Prenez
+          connaissance du<b> temps d'attente en temps réel </b>pour savoir quel
+          est le<b> meilleur moment </b>pour aller manger au Crous.
         </p>
+        <br></br>
+        <h2>Futures fonctionnalités</h2>
         <p>
-          Déchets Atari retrouvés lors de l'excavation de 2014. L'enfouissement
-          de jeux vidéo par Atari est un événement qui s'est déroulé en
-          septembre 1983 dans une décharge située à Alamogordo au
-          Nouveau-Mexique. En 1983, l'entreprise de jeu vidéo Atari enfouit de
-          nombreuses cartouches de jeu vidéo et des consoles de jeu invendues
-          dans la décharge d'Alamogordo, à la suite de mauvais résultats
-          commerciaux. Les causes de cette action sont essentiellement
-          économiques : il s'agit de réduire les stocks afin de bénéficier
-          d'allègements fiscaux. Selon la presse de l'époque, les jeux vidéo
-          enfouis sont notamment E.T. the Extra-Terrestrial, l'un des plus
-          grands échecs commerciaux de l'histoire du jeu vidéo, et la version de
-          Pac-Man sortie sur Atari 2600, succès commercial mais décrié par la
-          critique. Sitôt l'opération d’enfouissement rapportée par la presse,
-          des doutes sont émis sur la véracité et sur l'étendue des faits ;
-          certains considèrent pendant longtemps qu'il s'agit d'une légende
-          urbaine. Cet événement, cependant devenu une sorte d'icône culturelle,
-          symbolisant le krach du jeu vidéo de 1983, est le point d'orgue d'une
-          année fiscale désastreuse pour Atari, finalement revendue en 1984 par
-          sa société mère Warner Communications.
+          Plus vous utiliserez ce site et plus nous pourrons connaitre les
+          <b> périodes d'affluences </b>du Crous. Nous pourrons alors vous
+          partager nos<b> prévisions </b>sur le moment idéal pour aller au Crous
+          !
         </p>
       </Main>
     </>
