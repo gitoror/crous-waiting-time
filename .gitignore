@@ -35,3 +35,7 @@ yarn-error.log*
 /__workers/cwtAPI/node_modules
 
 .eslintrc.json
+
+# python worker
+/__workers/pythonCwtAPI/node_modules
+/__workers/pythonCwtAPI/env
