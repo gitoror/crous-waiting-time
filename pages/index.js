@@ -3,6 +3,7 @@ import { Inter } from "@next/font/google";
 import Main from "@/components/main.js";
 import ShowWaitTime from "@/components/ShowWaitTime";
 import GiveWaitTime from "@/components/GiveWaitTime";
+import ProcessImage from "@/components/ProcessImage";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function Home() {
         <GiveWaitTime />
         <br></br>
         <ShowWaitTime />
+        <ProcessImage />
       </Main>
     </>
   );
