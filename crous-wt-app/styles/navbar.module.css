@@ -1,0 +1,110 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  /* background-color: aquamarine; */
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.navbar > div {
+  display: flex;
+  align-items: center;
+  max-width: 752px;
+  width: 100%;
+  /* background-color: rgb(243, 232, 22); */
+  padding: 0px;
+}
+
+/* Logo */
+
+.logo {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: brown; */
+  margin-right: 25px;
+}
+
+.logo p {
+  margin-left: 5px;
+  justify-content: center;
+  font-weight: 550;
+}
+
+.logo span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Menu UL */
+
+.navbar ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  gap: 25px;
+  /* background-color: brown; */
+}
+
+.navbar li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+  /* background-color: royalblue; */
+  font-size: 18px;
+  padding: 7px;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+.navbar > div > ul > li > a:hover {
+  text-decoration-line: underline;
+}
+
+.link_active {
+  background-color: rgb(136, 204, 202);
+  border-radius: 3px;
+}
+/* Github */
+
+.github {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+.github span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.github p {
+  font-size: 18px;
+  margin-left: 5px;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+.github a:hover {
+  text-decoration-line: underline;
+}
+
+/* FAQ */
+.faq a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
