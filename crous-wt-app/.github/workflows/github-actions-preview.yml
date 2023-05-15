@@ -16,7 +16,7 @@ jobs:
           node-version: 18
 
       - run: npm ci
-      - run: npm test
+      - run: npm run test
 
   # Explore-GitHub-Actions:
   #   runs-on: ubuntu-latest
