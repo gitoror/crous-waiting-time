@@ -43,7 +43,15 @@ Receives a data object that contains a snapshot of the data stored at that path.
 on_value_created()
 
 2. Cloud Storage trigger  
-   Meme principe
+   Meme principe mais le Cloud Storage est plutot fait pour des images ou videos alors que le Realtime database est du JSON donc pas adapté
 
 3. Pub/Sub triggers  
-   A l'envoi d'une image dans le bucket supabase il faudrait aussi envoyer un message sur le topic Pub/Sub établi
+   A l'envoi d'une image dans le bucket supabase il faudrait aussi envoyer un message sur le topic Pub/Sub établi. Pub = ordi, Sub = cloud function
+
+Les options 1 et 2 obligent à migrer les données sur Firebase. La 2 slmt est adaptée pour stocker des images.
+L'option 3 permet de rester avec un tiers comme supabase.
+Pub/Sub est payant donc on n'aura plus accès au service après la fin de l'essai Google Cloud. C'est normal car cela permet de s'ouvrir à des tiers contrairement au Cloud Storage trigger qui oblige à rester chez Google.
+
+# Conclusion
+
+Migration, assez simple ici car app pas encore lancée donc pas de données. Il faut juste consulter la doc Google Storage, ce qui va prendre un peu de temps
