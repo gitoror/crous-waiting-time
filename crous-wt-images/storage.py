@@ -1,3 +1,5 @@
+
+from google.cloud import storage
 from storage3 import create_client
 import os
 from dotenv import load_dotenv
@@ -5,22 +7,23 @@ from PIL import Image
 from io import BytesIO
 load_dotenv()
 
-url = os.getenv("SUPABASE_URL")
-service_key = os.getenv("SUPABASE_KEY")
-# service key !!!! apiKey inutile dans les headers
-headers = {"Authorization": f"Bearer {service_key}"}
 
-storage_client = create_client(url, headers, is_async=False)
-print(storage_client.list_buckets())
+# url = os.getenv("SUPABASE_URL")
+# service_key = os.getenv("SUPABASE_KEY")
+# # service key !!!! apiKey inutile dans les headers
+# headers = {"Authorization": f"Bearer {service_key}"}
 
-res = storage_client.from_('img').download("images/2.jpg")
-print(type(res))
+# storage_client = create_client(url, headers, is_async=False)
+# print(storage_client.list_buckets())
 
-# Ouvrir l'image à partir des bytes
-image = Image.open(BytesIO(res))
+# res = storage_client.from_('img').download("images/2.jpg")
+# print(type(res))
 
-# Afficher l'image
-image.show()
+# # Ouvrir l'image à partir des bytes
+# image = Image.open(BytesIO(res))
+
+# # Afficher l'image
+# image.show()
 # img = Image.open("Capture2.PNG")
 # width, height = img.size
 # pixels = [[0 for x in range(width)] for y in range(height)]
