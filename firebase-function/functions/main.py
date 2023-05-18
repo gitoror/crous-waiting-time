@@ -55,6 +55,7 @@ def count_person(img):
 def process_images(
     event: storage_fn.CloudEvent[storage_fn.StorageObjectData],
 ):
+    # le bucket surveillé est défini dans l'interface admin firebase
     bucket_name = event.data.bucket
     file_path = pathlib.PurePath(event.data.name)
     content_type = event.data.content_type
