@@ -2,14 +2,13 @@
   "type": "module",
   "dependencies": {
     "@supabase/storage-js": "^2.5.1",
-    "@supabase/supabase-js": "^2.21.0",
+    "@supabase/supabase-js": "^2.22.0",
     "canvas": "^2.11.2",
     "dotenv": "^16.0.3"
   },
   "name": "croust-wt-images",
   "version": "1.0.0",
   "main": "a.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

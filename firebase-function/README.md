@@ -1,4 +1,4 @@
-# Aide
+# Aide Firebase
 
 firebase login
 firebase logout
@@ -11,10 +11,65 @@ firebase deploy --only functions:<fn_name> functions:<fn_name2> ...
 
 # Pour la prochaine fois
 
-Changer le bucket de trigger
-Implémenter process_image
-Créer realtime db ou alors mettre sur supabse (surement plus simple)
-Relier au temps d'attente
+- Changer le bucket de trigger (ok)
+- Implémenter process_image (ok)
+- Créer realtime db ou alors mettre sur supabse (surement plus simple) (ok)
+- Relier au temps d'attente : c'est la dérivée du nombre de personnes qui est important
+
+# idées calcul du temps d'attente
+
+Si une personne met 10 sec a traverser l'image, prenons une image toutes le s10 sec en moy, alors on aura forcément des personnes différentes sur chaque image. Si le nombre de personnes est cte alors c'est qu'il y a autant de personnes qui entrent et qui sortent. Si le nombre de personnes augmente alors c'est soit que des personnes sortent du crous, soit que des personnes viennent d'entrer sur l'image depuis ARTEM. Si le nombre de personnes diminue, alors c'est que des personnes viennet d'entrer au crous, soit que des personnes viennet de sortir de l'image vers ARTEM.
+
+Une personnes met 20 min en moyenne pour manger. Donc elle devrait sortir 20 min après sont entrée et faire augmenter le nombre de personnes. Pour compenser cet effet là, on fera le calcul avec un nombre effectif de personne
+
+N(t+20) = N(t) + pers - comp(20min) avec comp(20min) = N(t)
+N(t+10sec) = N(t) + pers - comp(10sec) avce comp(10sec) = 10sec/20min \* N(t) hyp de proportioanlité. 10s/20min ~ 0,1
+
+# idée 1
+
+Le nombre de personnes observées apparait dans les calulcs
+Par ex, si 1000 élèves au total. Si on est à 200 élèves alors beaucoup risquent de rentrer dans le crous, mais si on est à 700 élèves beaucoup risquent de sortir.
+
+N(0) + N(10) + ... + N(tf) = 1000
+tf = 13h-11h45 = 1h15
+Sum_N(t) = N(0) + ... + N(t)
+On va regarder la dérivée de Sum_N, on ne la connait qu'en valeur absolue car on ne connait pas le sens de circulation (pas de tracage, photo toutes les 30 sec)
+Si elle est forte alors c'est soit qu'il y a beaucoup d'entrées, soit qu'il y beaucoup de sorties.
+Comment trancher ?
+Un passage au crous fait à peu près 30min. Donc toutes les 30 min un élève sort du crous. Le premier élève rentrait dans le crous. Il est très probable que le deuxième élève visible soit un autre étudiant car la photo a été prises 30 sec plus tard et que la durée min de passage au crous est de 5min (cafet) et que d'autres étudiants vont arriver dans les 5min. Donc la première sortie ne peut s'effectuer que 5min plus tars.
+C'est un peu compliqué
+
+# idée 2
+
+Si SumN entre 0 et 50 : 0min d'attente
+50-200 : 10 min
+200-400: 15min
+...
+mais non car ne prend pas en compte l'arrivée massive de personens (dérivée
+
+# idée 3
+
+Regarder Sum_N(t) - Sum_N(t-20) = diff_N
+capacité queue (diff_N):
+
+- 20 personnes : 2 min
+- 20 - 40 personnes : 5 min
+- 40 - 60 personnes : 10 min
+
+Mais il faut coupler à Sum_N pour rejoindre l'idée 1, qui dit qu'on ne peut connaitre diff_N qu'en valeur absolue et que si Sum_N est petit alors diff_N est probablement > 0 et sinon < 0
+
+att = K1 \* diff_N + K2
+
+- Sum_N < 100 : K1 = 0.1
+- 100 < Sum_N < 200 : K1 = 0.12
+- 200 < Sum_N < 400 : K1 = 0.14
+- 400 < Sum_N < 600 : K1 = 0.1
+- 100 < Sum_N < 200 : K1 = 0.12
+  ...
+
+- diff_N < 20 : K2 = 0
+- 20 < diff_N < 40 : K2 = 2 min
+- 40 < diff_N < 60 : K2 = 4min
 
 # Possibilités Firebase
 

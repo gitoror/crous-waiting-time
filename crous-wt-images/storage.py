@@ -1,11 +1,18 @@
 
 from google.cloud import storage
-from storage3 import create_client
+from supabase import create_client
 import os
 from dotenv import load_dotenv
 from PIL import Image
 from io import BytesIO
 load_dotenv()
+
+url = os.environ.get("SUPABASE_URL")
+key = os.environ.get("SUPABASE_KEY")
+supabase = create_client(url, key)
+
+response = supabase.table('number_persons').select("*")
+print(response)
 
 
 # url = os.getenv("SUPABASE_URL")
