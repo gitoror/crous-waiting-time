@@ -9,6 +9,13 @@ source venv/bin/activate
 python3 -m pip3 install -r requirements.txt (avec l'ajout des bibliothèques à important dans le fichier req.txt)  
 firebase deploy --only functions:<fn_name> functions:<fn_name2> ...
 
+# Pour la prochaine fois
+
+Changer le bucket de trigger
+Implémenter process_image
+Créer realtime db ou alors mettre sur supabse (surement plus simple)
+Relier au temps d'attente
+
 # Possibilités Firebase
 
 La fonction cloud Firebase doit surveiller le bucket Supabase
