@@ -1,3 +1,14 @@
+# Aide
+
+firebase login
+firebase logout
+firebase init (créer nouveau projet)
+
+python3.X -m venv <env_name> (choisir parmi les versions déjà installées sur l'ordi)
+source venv/bin/activate  
+python3 -m pip3 install -r requirements.txt (avec l'ajout des bibliothèques à important dans le fichier req.txt)  
+firebase deploy --only functions:<fn_name> functions:<fn_name2> ...
+
 # Possibilités Firebase
 
 La fonction cloud Firebase doit surveiller le bucket Supabase
@@ -54,4 +65,5 @@ Pub/Sub est payant donc on n'aura plus accès au service après la fin de l'essa
 
 # Conclusion
 
+Solution Storage trigger.
 Migration, assez simple ici car app pas encore lancée donc pas de données. Il faut juste consulter la doc Google Storage, ce qui va prendre un peu de temps
