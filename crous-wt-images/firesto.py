@@ -13,7 +13,7 @@ firebase_admin.initialize_app(cred, {
 bucket = storage.bucket("crous-wt")
 
 # # Download an image from the bucket
-blob = bucket.blob("1.jpg")
+blob = bucket.blob("2.jpg")
 image_data = BytesIO()
 blob.download_to_file(image_data)
 image_data.seek(0)
