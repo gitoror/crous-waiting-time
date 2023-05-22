@@ -46,17 +46,51 @@ export default {
     if (request.method === 'GET') {
       console.log('get method');
 
-      let { data: waitTimes, error } = await supabase.from('test_cloudflare_workers').select('est_wait_time');
+      function formatDateToISOString(date) {
+        var year = date.getFullYear();
+        var month = ('0' + (date.getMonth() + 1)).slice(-2);
+        var day = ('0' + date.getDate()).slice(-2);
+        var hours = ('0' + date.getHours()).slice(-2);
+        var minutes = ('0' + date.getMinutes()).slice(-2);
+        var seconds = ('0' + date.getSeconds()).slice(-2);
+        var milliseconds = ('00' + date.getMilliseconds()).slice(-3);
 
-      let s = 0;
-      for (let i = 0; i < waitTimes.length; i++) {
-        s += waitTimes[i].est_wait_time;
-        console.log('waitTimes[', i, '] :', waitTimes[i].est_wait_time);
+        var timezoneOffset = date.getTimezoneOffset();
+        var offsetHours = Math.floor(Math.abs(timezoneOffset) / 60);
+        var offsetMinutes = Math.abs(timezoneOffset) % 60;
+        var offsetSign = timezoneOffset < 0 ? '+' : '-';
+
+        var formattedDate = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes + ':' + seconds + '.' + milliseconds + '55' + offsetSign + ('0' + offsetHours).slice(-2) + ':' + ('0' + offsetMinutes).slice(-2);
+
+        return formattedDate;
       }
-      data = {
-        averageWaitTime: s / waitTimes.length,
-      };
-      console.log('data.averageWaitTime (sent) :', data.averageWaitTime);
+
+      const now = new Date();
+      const time_last_minutes = new Date();
+      time_last_minutes.setMinutes(time_last_minutes.getMinutes() - 30);
+      const nowISO = formatDateToISOString(now);
+      const time_last_minutesISO = formatDateToISOString(time_last_minutes);
+
+      //
+
+      let { data: waitTimes, error } = await supabase.from('wait_times').select('waiting_time').lte('created_at', nowISO).gte('created_at', time_last_minutesISO);
+
+      if (waitTimes.length > 5) {
+        let s = 0;
+
+        for (let i = 0; i < waitTimes.length; i++) {
+          s += waitTimes[i].waiting_time;
+          console.log('waitTimes[', i, '] :', waitTimes[i].waiting_time);
+        }
+        data = {
+          averageWaitTime: s / waitTimes.length,
+        };
+        console.log('data.averageWaitTime (sent) :', data.averageWaitTime);
+      } else {
+        data = {
+          error: 'not enough data',
+        };
+      }
     }
 
     const json = JSON.stringify(data, null, 2);
