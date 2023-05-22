@@ -65,11 +65,40 @@ att = K1 \* diff_N + K2
 - 200 < Sum_N < 400 : K1 = 0.14
 - 400 < Sum_N < 600 : K1 = 0.1
 - 100 < Sum_N < 200 : K1 = 0.12
-  ...
+  ... pour les premiers essais 0.1 ?
 
 - diff_N < 20 : K2 = 0
 - 20 < diff_N < 40 : K2 = 2 min
 - 40 < diff_N < 60 : K2 = 4min
+
+# idée 4
+
+Le temps d'attente est lié à :
+
+- le taux d'accroissemnet du nombre de personnes = diff_N(t) = N(t) - N(t-dt)
+- le nombre de personnes dans la file d'attente (file + table crous) = N_in(t) = N(t-20mn) + ... + N(t-dt) + N(t) (hyp : une personne met 20 min à manger)
+
+Quelle formule choisir ?
+temps_attente(t) = K1 x diff_N(t)^p1 + K2 x N_in(t)^p2
+Si diff_N augmente alors temps_attente augmente --> p1 > 0
+Si N_in augmente alors temps d'attente augmente --> p2 > 0
+
+La dépendance en N_in^p2 n'est pas forcément proportionnelle. temps_attente peut évoluer par pallier de valeur de N_in puisque pour N_in < seuil il reste encore des places au niveau des tables de la cantine. Danx cet exemple, le facteur qui va alors beaucoup influencer temps_att est diff_N. En effet, si diff_N est tout d'un coup très grand pendant que N_in < seuil alors la queue risque de saturer très vite. Il est donc aussi possible de faire varier K1 en fonction de N_in
+
+Cela semble raisonnable de choisir une dépendance proportionnelle à diff_N (p1 = 1), temps_att est proportionnel au nombre de gens dans la queue puisque une personne est traitée toutes les X sec quoi qu'il arrive.
+
+Souci : en fait le temps d'attente n'est pas lié au nombre de personnes dans le crous en train de manger mais slmt à ceux dans la queue car il y a toujours des places dispo ou alors les gens galèrent 2 min pour trouver une place. Mais dans ce cas on ne parle plus d'attente dans la queue du crous. Ca peut donc être intéressant de donner un autre indicateur qui donnerait une image du nombre de places dispo. Par exemple, si diff_N a été très grand alors c'est que le nombre de place dispo diminue. N sera directmeent la quantité intéressante.
+
+donc temps_att = K1 x diff_N + f(N_in(t))
+avec f(n) = 0 si
+
+# diff_N slmt
+
+une
+
+# idées IA
+
+Améliorer le calcul de jour en jour
 
 # Possibilités Firebase
 
