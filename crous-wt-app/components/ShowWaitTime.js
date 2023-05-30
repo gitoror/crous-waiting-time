@@ -22,15 +22,29 @@ export default function ShowWaitTime() {
       .lte("created_at", nowISO)
       .gte("created_at", time_last_minutesISO);
     if (data) {
-      //console.log(data);
       setWaitTimes(data);
     }
+  }
+  const [waitTime, setWaitTime] = useState(0);
+  useEffect(() => {
+    getWaitTime();
+  }, [supabase]);
+
+  async function getWaitTime() {
+    const res = await fetch("https://cwtapi.arthur-gsy7242.workers.dev/");
+    const result = await res.json();
+    console.log(result);
+    const avg = result.averageWaitTime;
+
+    console.log(avg);
+
+    setWaitTime(avg);
   }
 
   return (
     <>
-      {/* Mettre le résultat de la edge function ici */}
-      <h4>Temps d'attente actuellement :</h4>
+      <h4>Temps d'attente actuellement : </h4>
+      <p>{waitTime} minutes</p>
       <br></br>
       <h4>Liste des participants à cette estimation :</h4>
       <div>

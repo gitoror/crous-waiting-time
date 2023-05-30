@@ -5,9 +5,14 @@ firebase logout
 firebase init (créer nouveau projet)
 
 python3.X -m venv <env_name> (choisir parmi les versions déjà installées sur l'ordi)
-source venv/bin/activate  
-python3 -m pip3 install -r requirements.txt (avec l'ajout des bibliothèques à important dans le fichier req.txt)  
+
+source venv/bin/activate
+
+python3 -m pip3 install -r requirements.txt (avec l'ajout des bibliothèques à important dans le fichier req.txt)
+
 firebase deploy --only functions:<fn_name> functions:<fn_name2> ...
+
+python3.11 a été nécessaire pour que ça marche sans erreur
 
 # Pour la prochaine fois
 

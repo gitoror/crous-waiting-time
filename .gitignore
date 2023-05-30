@@ -1,3 +1,7 @@
 .DS_Store
 .vscode
 a.py
+yolov8-sort/*
+people-counter-yolov8-sort/*
+people-counter-yolov8-sort.zip
+crous-wt-vision/*
