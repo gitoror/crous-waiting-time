@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabaseClient";
+import { useState, useEffect } from 'react';
+import { supabase } from '@/lib/supabaseClient';
+import GetAPIEstWaitTime from '@/components/GetAPIEstWaitTime.js';
 
 export default function ShowWaitTime() {
   const [waitTimes, setWaitTimes] = useState([]);
@@ -9,7 +10,7 @@ export default function ShowWaitTime() {
   }, [supabase]);
 
   async function getWaitTimes() {
-    const { data, error } = await supabase.from("wait_times").select();
+    const { data, error } = await supabase.from('wait_times').select();
     if (data) {
       console.log(data);
       setWaitTimes(data);
@@ -18,8 +19,9 @@ export default function ShowWaitTime() {
 
   return (
     <>
-      {/* Mettre le résultat de la edge function ici */}
-      <h4>Temps d'attente actuellement :</h4>
+      <h4>
+        Temps d'attente actuel : <GetAPIEstWaitTime />
+      </h4>
       <br></br>
       <h4>Liste des participants à cette estimation :</h4>
       <div>
