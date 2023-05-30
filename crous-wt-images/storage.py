@@ -1,26 +1,36 @@
-from storage3 import create_client
+
+from google.cloud import storage
+from supabase import create_client
 import os
 from dotenv import load_dotenv
 from PIL import Image
 from io import BytesIO
 load_dotenv()
 
-url = os.getenv("SUPABASE_URL")
-service_key = os.getenv("SUPABASE_KEY")
-# service key !!!! apiKey inutile dans les headers
-headers = {"Authorization": f"Bearer {service_key}"}
+url = os.environ.get("SUPABASE_URL")
+key = os.environ.get("SUPABASE_KEY")
+supabase = create_client(url, key)
 
-storage_client = create_client(url, headers, is_async=False)
-print(storage_client.list_buckets())
+response = supabase.table('number_persons').select("*")
+print(response)
 
-res = storage_client.from_('img').download("images/2.jpg")
-print(type(res))
 
-# Ouvrir l'image à partir des bytes
-image = Image.open(BytesIO(res))
+# url = os.getenv("SUPABASE_URL")
+# service_key = os.getenv("SUPABASE_KEY")
+# # service key !!!! apiKey inutile dans les headers
+# headers = {"Authorization": f"Bearer {service_key}"}
 
-# Afficher l'image
-image.show()
+# storage_client = create_client(url, headers, is_async=False)
+# print(storage_client.list_buckets())
+
+# res = storage_client.from_('img').download("images/2.jpg")
+# print(type(res))
+
+# # Ouvrir l'image à partir des bytes
+# image = Image.open(BytesIO(res))
+
+# # Afficher l'image
+# image.show()
 # img = Image.open("Capture2.PNG")
 # width, height = img.size
 # pixels = [[0 for x in range(width)] for y in range(height)]

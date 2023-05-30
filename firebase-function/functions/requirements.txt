@@ -1,5 +1,6 @@
 firebase_functions
 firebase-admin
 storage3
-PIL
-io
+Pillow
+supabase
+python-dotenv
