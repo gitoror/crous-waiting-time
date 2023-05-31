@@ -31,11 +31,16 @@ export default function ShowWaitTime() {
   }, [supabase]);
 
   async function getWaitTime() {
-    const res = await fetch("https://cwtapi.arthur-gsy7242.workers.dev/");
+    const origin = window.location.origin;
+    console.log("The problem");
+    const res = await fetch("https://cwtapi.arthur-gsy7242.workers.dev/", {});
+    console.log(res);
+    res.headers.append("Access-Control-Allow-Origin", origin);
     const result = await res.json();
     console.log(result);
-    const avg = result.averageWaitTime;
 
+    let avg = result.averageWaitTime;
+    avg = Math.round(avg) + 1;
     console.log(avg);
 
     setWaitTime(avg);
