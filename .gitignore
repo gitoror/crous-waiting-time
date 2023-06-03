@@ -1,4 +1,9 @@
 .DS_Store
 .vscode
 a.py
-crous-wt-vision/*
+#
+crous-wt-vision/images
+crous-wt-vision/videos
+crous-wt-vision/venv
+crous-wt-vision/__pycache__
+crous-wt-vision/yolo_models/*
