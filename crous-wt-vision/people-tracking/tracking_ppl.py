@@ -8,6 +8,9 @@ import os
 script_dir = os.path.dirname(os.path.abspath(__file__))
 cap = cv2.VideoCapture(script_dir+"/../videos/people_.mp4")
 mask = cv2.imread(script_dir+"/../images/mask.png")
+r, frame = cap.read()
+cap_out = cv2.VideoWriter(script_dir+"/../videos/people_out.mp4", cv2.VideoWriter_fourcc(
+    *"mp4v"), cap.get(cv2.CAP_PROP_FPS), (frame.shape[1], frame.shape[0]))
 
 model = YOLO("../yolo_models/yolov8n.pt")
 
@@ -20,7 +23,7 @@ while True:
     # Read
     ret, frame = cap.read()
     if not ret:
-        logging.error("Video ended or error reading file.")
+        print("Video ended or error reading file.")
         break
     frame_mask = cv2.bitwise_and(frame, mask)
     # Detect/Track
@@ -39,5 +42,10 @@ while True:
         draw_detection(frame, model, detection, counter)
     cv2.imshow("frame", frame)
     # Exit
-    if cv2.waitKey(0) & 0xFF == ord("q"):
+    if cv2.waitKey(1) & 0xFF == ord("q"):
         break
+    cap_out.write(frame)
+
+cap.release()
+cap_out.release()
+cv2.destroyAllWindows()
