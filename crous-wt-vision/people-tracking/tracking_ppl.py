@@ -1,11 +1,15 @@
 import cv2
 import logging
+from pathlib import Path
 from ultralytics import YOLO
 from utils import Point, to_vector, draw_detection, update_counter, Counter
+import os
 
-cap = cv2.VideoCapture("../videos/people_.mp4")
-mask = cv2.imread("../images/mask.png")
-model = YOLO("../yolov8n.pt")
+script_dir = os.path.dirname(os.path.abspath(__file__))
+cap = cv2.VideoCapture(script_dir+"/../videos/people_.mp4")
+mask = cv2.imread(script_dir+"/../images/mask.png")
+
+model = YOLO("../yolo_models/yolov8n.pt")
 
 tracker_states = {}
 line = [Point(295, 454), Point(1004, 454)]
@@ -20,16 +24,17 @@ while True:
         break
     frame_mask = cv2.bitwise_and(frame, mask)
     # Detect/Track
-    results = model.track(frame_mask, persist=True)
+    results = model.track(frame_mask, persist=True, verbose=False)
     boxes = results[0].boxes.xyxy.cpu().numpy().astype(int)
     ids = results[0].boxes.id.cpu().numpy().astype(int)
     classes = results[0].boxes.cls.cpu().numpy().astype(int)
     confs = results[0].boxes.conf.cpu().numpy()
     # Counter
     for detection in zip(boxes, ids, classes, confs):
-        update_counter(detection, line,line_vector, tracker_states,counter)    
+        update_counter(detection, line, line_vector, tracker_states, counter)
     # Draw
-    cv2.line(frame, (line[0].x, line[0].y), (line[1].x, line[1].y), (0, 0, 255), 2)
+    cv2.line(frame, (line[0].x, line[0].y),
+             (line[1].x, line[1].y), (0, 0, 255), 2)
     for detection in zip(boxes, ids, classes, confs):
         draw_detection(frame, model, detection, counter)
     cv2.imshow("frame", frame)
