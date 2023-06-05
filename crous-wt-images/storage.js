@@ -1,65 +1,9 @@
-import { createClient } from "@supabase/supabase-js";
+// import { createClient } from "@supabase/supabase-js";
 // import { StorageClient } from "@supabase/storage-js";
-const SUPABASE_URL = "https://butxcgynkfzmgavnapdi.supabase.co";
-const SUPABASE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHhjZ3lua2Z6bWdhdm5hcGRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODA2ODA2MDMsImV4cCI6MTk5NjI1NjYwM30.Ou2vrRzLQJjdbhWukGVrhVVmCF-J3SDt2GviXYA782Y";
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-//
-const now = new Date();
-const time_last_minutes = new Date();
-time_last_minutes.setMinutes(time_last_minutes.getMinutes() - 30);
-const nowISO = formatDateToISOString(now);
-const time_last_minutesISO = formatDateToISOString(time_last_minutes);
-console.log(now);
-//
-let { data, err } = await supabase
-  .from("wait_times")
-  .select("*")
-  .lte("created_at", nowISO)
-  .gte("created_at", time_last_minutesISO);
-console.log(data);
-
-function formatDateToISOString(date) {
-  var year = date.getFullYear();
-  var month = ("0" + (date.getMonth() + 1)).slice(-2);
-  var day = ("0" + date.getDate()).slice(-2);
-  var hours = ("0" + date.getHours()).slice(-2);
-  var minutes = ("0" + date.getMinutes()).slice(-2);
-  var seconds = ("0" + date.getSeconds()).slice(-2);
-  var milliseconds = ("00" + date.getMilliseconds()).slice(-3);
-
-  var timezoneOffset = date.getTimezoneOffset();
-  var offsetHours = Math.floor(Math.abs(timezoneOffset) / 60);
-  var offsetMinutes = Math.abs(timezoneOffset) % 60;
-  var offsetSign = timezoneOffset < 0 ? "+" : "-";
-
-  var formattedDate =
-    year +
-    "-" +
-    month +
-    "-" +
-    day +
-    "T" +
-    hours +
-    ":" +
-    minutes +
-    ":" +
-    seconds +
-    "." +
-    milliseconds +
-    "55" +
-    offsetSign +
-    ("0" + offsetHours).slice(-2) +
-    ":" +
-    ("0" + offsetMinutes).slice(-2);
-
-  return formattedDate;
-}
-
-// Exemple d'utilisation :
-var currentDate = new Date();
-var formattedDate = formatDateToISOString(currentDate);
-console.log(formattedDate);
+// const SUPABASE_URL = "https://butxcgynkfzmgavnapdi.supabase.co";
+// const SUPABASE_KEY =
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHhjZ3lua2Z6bWdhdm5hcGRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODA2ODA2MDMsImV4cCI6MTk5NjI1NjYwM30.Ou2vrRzLQJjdbhWukGVrhVVmCF-J3SDt2GviXYA782Y";
+// const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // Storage Client
 
@@ -73,19 +17,63 @@ console.log(formattedDate);
 // });
 // // Récupérer les données
 
-// const { data, error } = await storageClient.from("test3").list("im");
+// const { data, error } = await storageClient.from("music").list("msc");
 
 // console.log(data);
 
-// const { imContent, e } = await storageClient.from("test3").download("im/1.jpg");
-// console.log(imContent);
+// const { song, e } = await storageClient.from("music").download("msc/song.m4a");
+// console.log(song);
 
-// import { createClient } from "@supabase/supabase-js";
+const song = await fetch(
+  "https://butxcgynkfzmgavnapdi.supabase.co/storage/v1/object/public/music/msc/song.m4a"
+);
+console.log(song.headers);
+console.log(song.body);
+console.log(typeof song.body);
+console.log(song.body.getReader());
+console.log(song.json);
 
-// export const supabase = createClient(
-//   "https://butxcgynkfzmgavnapdi.supabase.co",
-//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1dHhjZ3lua2Z6bWdhdm5hcGRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODA2ODA2MDMsImV4cCI6MTk5NjI1NjYwM30.Ou2vrRzLQJjdbhWukGVrhVVmCF-J3SDt2GviXYA782Y"
-// );
+// console.log(song.headers);
+// console.log(song.body);
+// console.log(typeof song);
+// // ReadableStream to save in file
+// // const fs = require("fs");
+// import fs from "fs";
+// const fileStream = fs.createWriteStream("song.m4a");
 
-// const { data, error } = await supabase.from("number_persons").select();
-// console.log(data);
+// import fetch from "node-fetch";
+// import ffmpeg from "ffmpeg/ffmpeg.js";
+
+// const songUrl =
+//   "https://butxcgynkfzmgavnapdi.supabase.co/storage/v1/object/public/music/msc/song.m4a";
+
+// const convertToM4A = async () => {
+//   // Fetch the audio file
+//   const response = await fetch(songUrl);
+//   const arrayBuffer = await response.arrayBuffer();
+
+//   // Create a Uint8Array from the fetched data
+//   const uint8Array = new Uint8Array(arrayBuffer);
+
+//   // Convert the audio data using ffmpeg.js
+//   const ffmpegInstance = ffmpeg();
+//   await ffmpegInstance.load();
+
+//   ffmpegInstance.FS("writeFile", "input.m4a", uint8Array);
+
+//   // Run the conversion using the appropriate ffmpeg command
+//   await ffmpegInstance.run("-i", "input.m4a", "output.m4a");
+
+//   // Get the converted audio file as a Uint8Array
+//   const outputData = ffmpegInstance.FS("readFile", "output.m4a");
+
+//   // Save the outputData Uint8Array as an M4A file
+//   const outputBuffer = outputData.buffer;
+//   const outputBlob = new Blob([outputBuffer], { type: "audio/m4a" });
+//   const outputFileUrl = URL.createObjectURL(outputBlob);
+
+//   // You can then use the outputFileUrl to download or play the M4A file
+//   console.log("Output File URL:", outputFileUrl);
+// };
+
+// convertToM4A();

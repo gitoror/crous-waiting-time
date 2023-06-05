@@ -1,7 +1,13 @@
 .DS_Store
 .vscode
 a.py
-yolov8-sort/*
-people-counter-yolov8-sort/*
-people-counter-yolov8-sort.zip
-crous-wt-vision/*
+#
+crous-wt-vision/images
+crous-wt-vision/videos
+*venv
+*env
+*.env*
+*__pycache__
+crous-wt-vision/yolo_models/*
+*.pt
+*.jpg

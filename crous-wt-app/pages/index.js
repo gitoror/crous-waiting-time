@@ -15,6 +15,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Main>
+        <h1>Temps d'attente par sondage</h1>
+        <br></br>
         <GiveWaitTime />
         <br></br>
         <ShowWaitTime />
