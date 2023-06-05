@@ -37,6 +37,9 @@ export default function Navbar() {
             <li>
               <LinkItem href="/vision">Vision</LinkItem>
             </li>
+            <li>
+              <LinkItem href="/counter_person">Compteur de personnes</LinkItem>
+            </li>
           </ul>
         </div>
       </nav>

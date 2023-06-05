@@ -13,41 +13,41 @@ firebase_admin.initialize_app(cred, {
 bucket = storage.bucket("crous-wt")
 
 # # Download an image from the bucket
-blob = bucket.blob("2.jpg")
-image_data = BytesIO()
-blob.download_to_file(image_data)
-image_data.seek(0)
-image = Image.open(image_data)
+# blob = bucket.blob("2.jpg")
+# image_data = BytesIO()
+# blob.download_to_file(image_data)
+# image_data.seek(0)
+# image = Image.open(image_data)
 # image.show()
 
 # And process the image
 
 
-def countPerson(img):
-    img_grey = img.convert("L")
-    width, height = img_grey.size
-    nb_pixels_per_person = 70
-    pixelsGrey = [[0 for x in range(width)] for y in range(height)]
-    for x in range(width):
-        for y in range(height):
-            g = img_grey.getpixel((x, y))
-            pixelsGrey[y][x] = g
-    M = max(
-        [max(pixelsGrey[i]) for i in range(len(pixelsGrey))]
-    )
-    count = 0
-    for i in range(len(pixelsGrey)):
-        for j in range(len(pixelsGrey[0])):
-            if pixelsGrey[i][j] >= M - 10:
-                count += 1
-    return int(count / nb_pixels_per_person)
+# def countPerson(img):
+#     img_grey = img.convert("L")
+#     width, height = img_grey.size
+#     nb_pixels_per_person = 70
+#     pixelsGrey = [[0 for x in range(width)] for y in range(height)]
+#     for x in range(width):
+#         for y in range(height):
+#             g = img_grey.getpixel((x, y))
+#             pixelsGrey[y][x] = g
+#     M = max(
+#         [max(pixelsGrey[i]) for i in range(len(pixelsGrey))]
+#     )
+#     count = 0
+#     for i in range(len(pixelsGrey)):
+#         for j in range(len(pixelsGrey[0])):
+#             if pixelsGrey[i][j] >= M - 10:
+#                 count += 1
+#     return int(count / nb_pixels_per_person)
 
 
-print(countPerson(image))
+# print(countPerson(image))
 
 
-# # Upload an image to the bucket
-# blob = bucket.blob("4.jpg")
-# blob.metadata = {"processed": "false"}
-# blob.content_type = 'image/jpeg'
-# blob.upload_from_filename("images/4.jpg")
+# Upload an image to the bucket
+blob = bucket.blob("4.jpg")
+blob.metadata = {"processed": "false"}
+blob.content_type = 'image/jpeg'
+blob.upload_from_filename("images/4.jpg")
