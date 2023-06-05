@@ -1,3 +1,4 @@
 ## Crous waiting time
 
-Project
+App to check crous waiting time
+
