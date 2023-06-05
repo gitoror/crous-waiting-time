@@ -34,6 +34,9 @@ export default function Navbar() {
             <li>
               <LinkItem href="/apropos">À propos</LinkItem>
             </li>
+            <li>
+              <LinkItem href="/vision">Vision</LinkItem>
+            </li>
           </ul>
         </div>
       </nav>

@@ -20,8 +20,6 @@ export default function Home() {
         <GiveWaitTime />
         <br></br>
         <ShowWaitTime />
-        <br></br>
-        <h1>Temps d'attente par computer vision</h1>
       </Main>
     </>
   );

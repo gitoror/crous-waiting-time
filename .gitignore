@@ -10,3 +10,4 @@ crous-wt-vision/videos
 *__pycache__
 crous-wt-vision/yolo_models/*
 *.pt
+*.jpg

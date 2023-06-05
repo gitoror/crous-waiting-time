@@ -35,12 +35,12 @@ export default function ShowWaitTime() {
     console.log("The problem");
     const res = await fetch("https://cwtapi.arthur-gsy7242.workers.dev/", {});
     console.log(res);
-    res.headers.append("Access-Control-Allow-Origin", origin);
+    // res.headers.append("Access-Control-Allow-Origin", origin);
     const result = await res.json();
     console.log(result);
 
     let avg = result.averageWaitTime;
-    avg = Math.round(avg) + 1;
+    avg = Math.round(avg);
     console.log(avg);
 
     setWaitTime(avg);
