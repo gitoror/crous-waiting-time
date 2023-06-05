@@ -47,7 +47,7 @@ bucket = storage.bucket("crous-wt")
 
 
 # Upload an image to the bucket
-blob = bucket.blob("4.jpg")
+blob = bucket.blob("8.jpg")
 blob.metadata = {"processed": "false"}
 blob.content_type = 'image/jpeg'
 blob.upload_from_filename("images/4.jpg")
