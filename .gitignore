@@ -13,3 +13,11 @@ crous-wt-vision/yolo_models/*
 *.jpg
 *.mp4
 yolo_models/*
+yolov8-sort/*
+people-counter-yolov8-sort/*
+people-counter-yolov8-sort.zip
+crous-wt-vision/*
+*.mp4
+yolo_models/*
+*.jpg
+*.png
