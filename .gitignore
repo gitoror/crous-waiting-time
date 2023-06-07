@@ -1,23 +1,18 @@
 .DS_Store
 .vscode
-a.py
-#
+# 
 crous-wt-vision/images
 crous-wt-vision/videos
 *venv
 *env
 *.env*
 *__pycache__
-crous-wt-vision/yolo_models/*
+yolo_models/*
+
+# Extensions
 *.pt
 *.jpg
 *.mp4
-yolo_models/*
-yolov8-sort/*
-people-counter-yolov8-sort/*
-people-counter-yolov8-sort.zip
-crous-wt-vision/*
 *.mp4
-yolo_models/*
 *.png
 
