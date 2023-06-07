@@ -1,8 +1,3 @@
-# Welcome to Cloud Functions for Firebase for Python!
-# To get started, simply uncomment the below code or create your own.
-# Deploy with `firebase deploy`
-
-
 import os
 import pathlib
 from firebase_functions import https_fn
@@ -18,17 +13,6 @@ load_dotenv()
 
 
 initialize_app()
-
-
-@https_fn.on_request()
-def on_request_example(req: https_fn.Request) -> https_fn.Response:
-    url = os.environ.get("SUPABASE_URL")
-    key = os.environ.get("SUPABASE_KEY")
-    supabase = create_client(url, key)
-
-    response = supabase.table('number_persons').select("*").execute()
-
-    return https_fn.Response(f'I am a function! {response}')
 
 
 def count_person(img):
@@ -82,3 +66,14 @@ def process_images(
     supabase = create_client(url, key)
     data, count = supabase.table('number_persons').insert(
         {"nb_of_persons": val, "img_id": event.data.name}).execute()
+
+
+@https_fn.on_request()
+def on_request_example(req: https_fn.Request) -> https_fn.Response:
+    url = os.environ.get("SUPABASE_URL")
+    key = os.environ.get("SUPABASE_KEY")
+    supabase = create_client(url, key)
+
+    response = supabase.table('number_persons').select("*").execute()
+
+    return https_fn.Response(f'I am a function! {response}')
