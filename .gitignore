@@ -20,4 +20,4 @@ crous-wt-vision/*
 *.mp4
 yolo_models/*
 *.jpg
-*.png
+*/*/*.png
