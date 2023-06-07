@@ -3,6 +3,7 @@
 # 
 crous-wt-vision/images
 crous-wt-vision/videos
+crous-wt-vision/*.mp4
 *venv
 *env
 *.env*
@@ -12,7 +13,5 @@ yolo_models/*
 # Extensions
 *.pt
 *.jpg
-*.mp4
-*.mp4
 *.png
 
