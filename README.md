@@ -1,6 +1,7 @@
 ## Crous Waiting Time
 
 Ce projet a pour objectif d'afficher le temps d'attente dans la queue de la cantine de l'école.
+Les slides de la présentation sont aussi à la racine de ce repository.
 Le projet se décline en deux versions :
 
 # 1. Sondage - Advanced Software Engineering
