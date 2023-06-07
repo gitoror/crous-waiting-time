@@ -1,6 +1,7 @@
 ## Crous Waiting Time
 
 Ce projet a pour objectif d'afficher le temps d'attente dans la queue de la cantine de l'école.
+Les `slides` de la soutenances sont également disponibles à la racine du repository.
 Le projet se décline en deux versions :
 
 # 1. Sondage - Advanced Software Engineering
@@ -17,10 +18,12 @@ Deux approches on été envisagées :
 
 - Traitement par suivi de personnes : Le nombre de personnes est obtenu en comptant les personnes entrant dans la file d'attente les 5 dernières minutes. Pour cela, on utilise la biblitohèque `ultralytics` pour disposer des outils de détection (YOLOv8) et de tracking (Bot-SORT). Une fois les personnes suivies, notre programme regadre si les personnes traversent une ligne virtuelle (produit vectoriel) et effectue les comptage. Comme démontré pendant la soutenance, le temps d'attente est calculé en même temps que le traitement de la vidéo. La solution n'a pas été développée jusqu'à la vidéo en live, mais c'est l'objectif. Un autre objectif est de réaliser le traitement sur l'edge ou sur le cloud (préférable sur l'edge), notamment en s'inspirant du travail déjà effectué avec l'approche par caméra infrarouge qui utilise Google Cloud. Le développement a necessité l'uitlisation de Google Colab pour faire tourner le programme sur GPU.
 
+Il est possible de voir le résultat du suvi de personnes implémenté à la racine du repository `people_out.mp4`
+
 # Les dossiers
 
 - `crous-wt-app` : partie Ambient systems et Adv Software Engineering - site web `https://crous-waiting-time.vercel.app/`
 - `crous-wt-images` : partie Ambient systems - traitement caméra infrarouge
 - `crous-wt-vision` : partie Ambient systems - traitement par suivi de personnes
-- `firebase-function`: partie Ambient systems - cloud function Google cloud pour traiter les images infrarouges
-- `worker` : partie Adv Software Engineering - cloud function Cloudflare worker pour la moyenne du temps d'attente
+- `cloud-google`: partie Ambient systems - cloud function Google cloud pour traiter les images infrarouges
+- `cloud-firebase` : partie Adv Software Engineering - cloud function Cloudflare worker pour la moyenne du temps d'attente
