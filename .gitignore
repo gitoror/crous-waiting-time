@@ -11,3 +11,5 @@ crous-wt-vision/videos
 crous-wt-vision/yolo_models/*
 *.pt
 *.jpg
+*.mp4
+yolo_models/*
