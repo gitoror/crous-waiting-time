@@ -3,7 +3,6 @@ import { supabase } from "@/lib/supabaseClient";
 
 export default function ShowWaitTime() {
   const [waitTimes, setWaitTimes] = useState([]);
-
   useEffect(() => {
     getWaitTimes();
   }, [supabase]);
@@ -14,8 +13,6 @@ export default function ShowWaitTime() {
     time_last_minutes.setMinutes(time_last_minutes.getMinutes() - 30);
     const nowISO = formatDateToISOString(now);
     const time_last_minutesISO = formatDateToISOString(time_last_minutes);
-
-    //
     let { data, err } = await supabase
       .from("wait_times")
       .select("*")
@@ -31,18 +28,10 @@ export default function ShowWaitTime() {
   }, [supabase]);
 
   async function getWaitTime() {
-    const origin = window.location.origin;
-    console.log("The problem");
     const res = await fetch("https://cwtapi.arthur-gsy7242.workers.dev/", {});
-    console.log(res);
-    // res.headers.append("Access-Control-Allow-Origin", origin);
     const result = await res.json();
-    console.log(result);
-
     let avg = result.averageWaitTime;
     avg = Math.round(avg);
-    console.log(avg);
-
     setWaitTime(avg);
   }
 
