@@ -51,6 +51,11 @@ export default function ShowWaitTime() {
       <h4>Temps d'attente actuellement : </h4>
       <p>{waitTime} minutes</p>
       <br></br>
+      <p>
+        Remarque : 6 estimations sont nécessaires pour afficher un résultat non
+        nul.
+      </p>
+      <br></br>
       <h4>Liste des participants à cette estimation :</h4>
       <div>
         {waitTimes.map((waitTime) => (

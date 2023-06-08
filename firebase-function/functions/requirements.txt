@@ -1,6 +1,0 @@
-firebase_functions
-firebase-admin
-storage3
-Pillow
-supabase
-python-dotenv
