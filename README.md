@@ -8,7 +8,8 @@ Le projet se décline en deux versions :
 
 En sondant les personnes dans la file d'attente, le temps d'attente par cette approche est affiché sur le site internet `https://crous-waiting-time.vercel.app`. Le temps d'attente est égal à la moyenne des réponses du sondage. Cette moyenne est issue d'un calcul réalise dans le cloud sur Cloudflare workers.
 
-Attention : il faut utiliser le navigateur Google Chrome car il y a des porblèmes de CORS pour l'affichage du temps d'attente.
+Attention : il reste un problème de CORS qui ne redn pas le temps d'attente visible sur tou sles navigateurs. Il donc utiliser `Google Chrome`.
+
 # 2. Analyse d'images/vidéos - Ambient systems
 
 L'approche consiste à compter le nombre de personnes dans la file pour estimer le temps d'attente, qui est proportionnel au nombre de personnes dans la file. Le coefficient de proportionalité n'est pas dimensionné puisque nous n'avons des tests que sur des vidéos prises sur internet.  

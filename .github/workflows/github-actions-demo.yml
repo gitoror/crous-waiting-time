@@ -2,7 +2,12 @@ name: Continuous Integration
 
 run-name: ${{ github.actor }} is running CI 👀
 
-on: [push]
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches: [main]
 
 jobs:
   test-push:
@@ -15,8 +20,8 @@ jobs:
         with:
           node-version: 18
 
-      - run: npm ci
-      - run: npm run test
+      - run: cd crous-wt-app && npm ci
+      - run: cd crous-wt-app && npm run test
 
   # Explore-GitHub-Actions:
   #   runs-on: ubuntu-latest

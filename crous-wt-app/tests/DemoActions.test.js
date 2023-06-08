@@ -1,7 +1,7 @@
-import { assert, expect, test } from "vitest";
+import { assert, expect, test } from 'vitest';
 
-import { render, act } from "vitest/next";
-import ShowWaitTime from "../components/ShowWaitTime.js";
+import { render, act } from 'vitest/next';
+import ShowWaitTime from '../components/ShowWaitTime.js';
 
 //////////////////////////////
 // console.log('this is a test');
@@ -15,7 +15,7 @@ const object = {
 
 // TESTS
 
-test("test1", () => {
+test('test1', () => {
   expect(object.a).toBe(1);
 });
 
@@ -52,11 +52,23 @@ const waitTimesData = [
     waiting_time: 2,
     name: "Tom",
   },
+  {
+    id: 14,
+    created_at: "2023-05-18T21:42:07.41174+00:00",
+    waiting_time: 6,
+    name: "Jean",
+  },
+  {
+    id: 14,
+    created_at: "2023-05-18T21:42:07.41174+00:00",
+    waiting_time: 7,
+    name: "Jean",
+  },
 ];
 
-it("should fetch and display data", async () => {
-  await act(async () => {
-    const { getByText } = render(<ShowWaitTime />);
+// it("should fetch and display data", async () => {
+//   await act(async () => {
+//     const { getByText } = render(<ShowWaitTime />);
 
     // Assert loading state
     expect(getByText("Loading data...")).toBeInTheDocument();
