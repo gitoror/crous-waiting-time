@@ -69,8 +69,7 @@ const waitTimesData = [
 //   });
 // });
 
-import { render, screen } from 'vitest';
-import ShowWaitTime from '@/components/ShowWaitTime';
+import { screen } from 'vitest';
 
 jest.mock('@/lib/supabaseClient', () => ({
   supabase: {
